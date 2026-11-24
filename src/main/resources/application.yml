@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: seckill-backend
+  datasource:
+    # 数据库地址默认指向 RDS 内网地址，可用环境变量覆盖
+    url: jdbc:mysql://${DB_HOST:192.168.0.100}:${DB_PORT:3306}/${DB_NAME:seckill}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: ${DB_USER:seckill}
+    password: ${DB_PASSWORD:Seckill@123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 5000
+
+logging:
+  level:
+    root: info
+    com.seckill: info
